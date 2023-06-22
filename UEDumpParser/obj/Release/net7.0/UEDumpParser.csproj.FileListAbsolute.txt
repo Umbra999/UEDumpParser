@@ -1,0 +1,15 @@
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\bin\Release\net7.0\UEDumpParser.exe
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\bin\Release\net7.0\UEDumpParser.deps.json
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\bin\Release\net7.0\UEDumpParser.runtimeconfig.json
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\bin\Release\net7.0\UEDumpParser.dll
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\bin\Release\net7.0\UEDumpParser.pdb
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\obj\Release\net7.0\UEDumpParser.csproj.AssemblyReference.cache
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\obj\Release\net7.0\UEDumpParser.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\obj\Release\net7.0\UEDumpParser.AssemblyInfoInputs.cache
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\obj\Release\net7.0\UEDumpParser.AssemblyInfo.cs
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\obj\Release\net7.0\UEDumpParser.csproj.CoreCompileInputs.cache
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\obj\Release\net7.0\UEDumpParser.dll
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\obj\Release\net7.0\refint\UEDumpParser.dll
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\obj\Release\net7.0\UEDumpParser.pdb
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\obj\Release\net7.0\UEDumpParser.genruntimeconfig.cache
+C:\Users\Umbra\source\repos\UEDumpParser\UEDumpParser\obj\Release\net7.0\ref\UEDumpParser.dll
