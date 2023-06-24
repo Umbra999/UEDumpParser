@@ -66,7 +66,7 @@ namespace UEDumpParser
                                 string propLine = Line.Substring(propIndex).Replace(";", "");
                                 string[] split = propLine.Split(" ");
 
-                                string Name = split[split.Length - 3];
+                                string Name = Utils.SanitizeString(split[split.Length - 3]);
 
                                 if (!Utils.IsStringValid(Name)) continue;
 
@@ -86,7 +86,7 @@ namespace UEDumpParser
                                 string propLine = Line.Substring(propIndex).Replace(";", "");
                                 string[] split = propLine.Split(" ");
 
-                                string Name = split[split.Length - 3];
+                                string Name = Utils.SanitizeString(split[split.Length - 3]);
 
                                 if (!Utils.IsStringValid(Name)) continue;
 
@@ -105,7 +105,7 @@ namespace UEDumpParser
                                 string propLine = Line.Substring(propIndex).Replace(";", "");
                                 string[] split = propLine.Split(" ");
 
-                                string Name = split[split.Length - 3];
+                                string Name = Utils.SanitizeString(split[split.Length - 3]);
 
                                 if (!Utils.IsStringValid(Name)) continue;
 
@@ -124,7 +124,7 @@ namespace UEDumpParser
                                 string propLine = Line.Substring(propIndex).Replace(";", "");
                                 string[] split = propLine.Split(" ");
 
-                                string Name = split[split.Length - 3];
+                                string Name = Utils.SanitizeString(split[split.Length - 3]);
 
                                 if (!Utils.IsStringValid(Name)) continue;
 
@@ -149,7 +149,7 @@ namespace UEDumpParser
                                 string propLine = Line.Substring(propIndex).Replace(";", "");
                                 string[] split = propLine.Split(" ");
 
-                                string Name = split[split.Length - 3];
+                                string Name = Utils.SanitizeString(split[split.Length - 3]);
 
                                 if (!Utils.IsStringValid(Name)) continue;
 
@@ -168,7 +168,7 @@ namespace UEDumpParser
                                 string propLine = Line.Substring(propIndex).Replace(";", "");
                                 string[] split = propLine.Split(" ");
 
-                                string Name = split[split.Length - 3];
+                                string Name = Utils.SanitizeString(split[split.Length - 3]);
 
                                 if (!Utils.IsStringValid(Name)) continue;
 
@@ -187,7 +187,7 @@ namespace UEDumpParser
                                 string propLine = Line.Substring(propIndex).Replace(";", "");
                                 string[] split = propLine.Split(" ");
 
-                                string Name = split[split.Length - 3];
+                                string Name = Utils.SanitizeString(split[split.Length - 3]);
 
                                 if (!Utils.IsStringValid(Name)) continue;
 
@@ -206,7 +206,7 @@ namespace UEDumpParser
                                 string propLine = Line.Substring(propIndex).Replace(";", "");
                                 string[] split = propLine.Split(" ");
 
-                                string Name = split[split.Length - 3];
+                                string Name = Utils.SanitizeString(split[split.Length - 3]);
 
                                 if (!Utils.IsStringValid(Name)) continue;
 
@@ -225,7 +225,7 @@ namespace UEDumpParser
                                 string propLine = Line.Substring(propIndex).Replace(";", "");
                                 string[] split = propLine.Split(" ");
 
-                                string Name = split[split.Length - 3];
+                                string Name = Utils.SanitizeString(split[split.Length - 3]);
 
                                 if (!Utils.IsStringValid(Name)) continue;
 
@@ -244,7 +244,7 @@ namespace UEDumpParser
                                 string propLine = Line.Substring(propIndex).Replace(";", "");
                                 string[] split = propLine.Split(" ");
 
-                                string Name = split[split.Length - 3];
+                                string Name = Utils.SanitizeString(split[split.Length - 3]);
 
                                 if (!Utils.IsStringValid(Name)) continue;
 
@@ -263,7 +263,7 @@ namespace UEDumpParser
                                 string propLine = Line.Substring(propIndex).Replace(";", "");
                                 string[] split = propLine.Split(" ");
 
-                                string Name = split[split.Length - 3];
+                                string Name = Utils.SanitizeString(split[split.Length - 3]);
 
                                 if (!Utils.IsStringValid(Name)) continue;
 
@@ -282,7 +282,7 @@ namespace UEDumpParser
                                 string propLine = Line.Substring(propIndex).Replace(";", "");
                                 string[] split = propLine.Split(" ");
 
-                                string Name = split[split.Length - 3];
+                                string Name = Utils.SanitizeString(split[split.Length - 3]);
 
                                 if (!Utils.IsStringValid(Name)) continue;
 
