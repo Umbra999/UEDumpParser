@@ -7,7 +7,7 @@ Known Issues:
 - Since its converting raw Dump, some names might be doubled in some Games, for now you can just rename them in your Offset class by Hand it should not be that much
 - Not all types are supported yet, stuff MIGHT be missing
 
-Future Implentations:
+Future Plans:
 - SDK generator, this way you dont need to mess with offsets ever again and can work with full classes
 - Method calling, right now it only works on props/fields/classes
 
