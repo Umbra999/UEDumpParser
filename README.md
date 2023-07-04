@@ -20,4 +20,6 @@ Usage:
 4. Run the Parser
 5. A Folder called Output should be created with 3 classes. Enums, Classes and Structs
 6. Put the 3 Classes inside your Project
-7. Now you can use it something like this: https://cdn.discordapp.com/attachments/855072998796296212/1125807010298986567/image.png
+7. Now you can use it something like this: ![image](https://github.com/Umbra999/UEDumpParser/assets/69671761/d6835a02-4ef2-4bd5-a142-6247dcd8a14a)
+ ![image](https://github.com/Umbra999/UEDumpParser/assets/69671761/a9512b46-5e06-4acd-8376-3dfa3b7f9b1b)
+
