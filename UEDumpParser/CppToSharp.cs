@@ -55,249 +55,28 @@ namespace UEDumpParser
                 {
                     string[] splitted = Line.Split(" ");
 
-                    string Type = splitted[0].Trim();
-
-                    switch (Type)
+                    string Type = ConventionHelper.GetManagedType(splitted[0].Trim());
+                    if (Type == null)
                     {
-                        case "struct":
-                            {
-                                string propName = splitted[1].Trim();
-                                int propIndex = Line.IndexOf(propName);
-                                string propLine = Line.Substring(propIndex).Replace(";", "");
-                                string[] split = propLine.Split(" ");
-
-                                string Name = Utils.SanitizeString(split[split.Length - 3]);
-
-                                if (!Utils.IsStringValid(Name)) continue;
-
-                                string Offset = split[split.Length - 1].Split("(")[0];
-                                string OffsetType = Utils.IsByte(Offset) ? "byte" : Utils.IsUshort(Offset) ? "ushort" : "uint";
-                                string StructType = split[0];
-
-                                string prop = $"public const {OffsetType} {Name} = {Offset}; // {Type} ({StructType})";
-                                Converted.Add("            " + prop);
-                            }
-                            break;
-
-                        case "bool":
-                            {
-                                string propName = splitted[1].Trim();
-                                int propIndex = Line.IndexOf(propName);
-                                string propLine = Line.Substring(propIndex).Replace(";", "");
-                                string[] split = propLine.Split(" ");
-
-                                string Name = Utils.SanitizeString(split[split.Length - 3]);
-
-                                if (!Utils.IsStringValid(Name)) continue;
-
-                                string Offset = split[split.Length - 1].Split("(")[0];
-                                string OffsetType = Utils.IsByte(Offset) ? "byte" : Utils.IsUshort(Offset) ? "ushort" : "uint";
-
-                                string prop = $"public const {OffsetType} {Name} = {Offset}; // {Type}";
-                                Converted.Add("            " + prop);
-                            }
-                            break;
-
-                        case "char":
-                            {
-                                string propName = splitted[1].Trim();
-                                int propIndex = Line.IndexOf(propName);
-                                string propLine = Line.Substring(propIndex).Replace(";", "");
-                                string[] split = propLine.Split(" ");
-
-                                string Name = Utils.SanitizeString(split[split.Length - 3]);
-
-                                if (!Utils.IsStringValid(Name)) continue;
-
-                                string Offset = split[split.Length - 1].Split("(")[0];
-                                string OffsetType = Utils.IsByte(Offset) ? "byte" : Utils.IsUshort(Offset) ? "ushort" : "uint";
-
-                                string prop = $"public const {OffsetType} {Name} = {Offset}; // {Type}";
-                                Converted.Add("            " + prop);
-                            }
-                            break;
-
-                        case "float":
-                            {
-                                string propName = splitted[1].Trim();
-                                int propIndex = Line.IndexOf(propName);
-                                string propLine = Line.Substring(propIndex).Replace(";", "");
-                                string[] split = propLine.Split(" ");
-
-                                string Name = Utils.SanitizeString(split[split.Length - 3]);
-
-                                if (!Utils.IsStringValid(Name)) continue;
-
-                                string Offset = split[split.Length - 1].Split("(")[0];
-                                string OffsetType = Utils.IsByte(Offset) ? "byte" : Utils.IsUshort(Offset) ? "ushort" : "uint";
-
-                                string prop = $"public const {OffsetType} {Name} = {Offset}; // {Type}";
-                                Converted.Add("            " + prop);
-                            }
-                            break;
-
-                        case "void":
-                            {
-                                // not supported yet
-                            }
-                            break;
-
-                        case "int32_t":
-                            {
-                                string propName = splitted[1].Trim();
-                                int propIndex = Line.IndexOf(propName);
-                                string propLine = Line.Substring(propIndex).Replace(";", "");
-                                string[] split = propLine.Split(" ");
-
-                                string Name = Utils.SanitizeString(split[split.Length - 3]);
-
-                                if (!Utils.IsStringValid(Name)) continue;
-
-                                string Offset = split[split.Length - 1].Split("(")[0];
-                                string OffsetType = Utils.IsByte(Offset) ? "byte" : Utils.IsUshort(Offset) ? "ushort" : "uint";
-
-                                string prop = $"public const {OffsetType} {Name} = {Offset}; // {Type}";
-                                Converted.Add("            " + prop);
-                            }
-                            break;
-
-                        case "uint32_t":
-                            {
-                                string propName = splitted[1].Trim();
-                                int propIndex = Line.IndexOf(propName);
-                                string propLine = Line.Substring(propIndex).Replace(";", "");
-                                string[] split = propLine.Split(" ");
-
-                                string Name = Utils.SanitizeString(split[split.Length - 3]);
-
-                                if (!Utils.IsStringValid(Name)) continue;
-
-                                string Offset = split[split.Length - 1].Split("(")[0];
-                                string OffsetType = Utils.IsByte(Offset) ? "byte" : Utils.IsUshort(Offset) ? "ushort" : "uint";
-
-                                string prop = $"public const {OffsetType} {Name} = {Offset}; // {Type}";
-                                Converted.Add("            " + prop);
-                            }
-                            break;
-
-                        case "uint16_t":
-                            {
-                                string propName = splitted[1].Trim();
-                                int propIndex = Line.IndexOf(propName);
-                                string propLine = Line.Substring(propIndex).Replace(";", "");
-                                string[] split = propLine.Split(" ");
-
-                                string Name = Utils.SanitizeString(split[split.Length - 3]);
-
-                                if (!Utils.IsStringValid(Name)) continue;
-
-                                string Offset = split[split.Length - 1].Split("(")[0];
-                                string OffsetType = Utils.IsByte(Offset) ? "byte" : Utils.IsUshort(Offset) ? "ushort" : "uint";
-
-                                string prop = $"public const {OffsetType} {Name} = {Offset}; // {Type}";
-                                Converted.Add("            " + prop);
-                            }
-                            break;
-
-                        case "int8_t":
-                            {
-                                string propName = splitted[1].Trim();
-                                int propIndex = Line.IndexOf(propName);
-                                string propLine = Line.Substring(propIndex).Replace(";", "");
-                                string[] split = propLine.Split(" ");
-
-                                string Name = Utils.SanitizeString(split[split.Length - 3]);
-
-                                if (!Utils.IsStringValid(Name)) continue;
-
-                                string Offset = split[split.Length - 1].Split("(")[0];
-                                string OffsetType = Utils.IsByte(Offset) ? "byte" : Utils.IsUshort(Offset) ? "ushort" : "uint";
-
-                                string prop = $"public const {OffsetType} {Name} = {Offset}; // {Type}";
-                                Converted.Add("            " + prop);
-                            }
-                            break;
-
-                        case "int16_t":
-                            {
-                                string propName = splitted[1].Trim();
-                                int propIndex = Line.IndexOf(propName);
-                                string propLine = Line.Substring(propIndex).Replace(";", "");
-                                string[] split = propLine.Split(" ");
-
-                                string Name = Utils.SanitizeString(split[split.Length - 3]);
-
-                                if (!Utils.IsStringValid(Name)) continue;
-
-                                string Offset = split[split.Length - 1].Split("(")[0];
-                                string OffsetType = Utils.IsByte(Offset) ? "byte" : Utils.IsUshort(Offset) ? "ushort" : "uint";
-
-                                string prop = $"public const {OffsetType} {Name} = {Offset}; // {Type}";
-                                Converted.Add("            " + prop);
-                            }
-                            break;
-
-                        case "int64_t":
-                            {
-                                string propName = splitted[1].Trim();
-                                int propIndex = Line.IndexOf(propName);
-                                string propLine = Line.Substring(propIndex).Replace(";", "");
-                                string[] split = propLine.Split(" ");
-
-                                string Name = Utils.SanitizeString(split[split.Length - 3]);
-
-                                if (!Utils.IsStringValid(Name)) continue;
-
-                                string Offset = split[split.Length - 1].Split("(")[0];
-                                string OffsetType = Utils.IsByte(Offset) ? "byte" : Utils.IsUshort(Offset) ? "ushort" : "uint";
-
-                                string prop = $"public const {OffsetType} {Name} = {Offset}; // {Type}";
-                                Converted.Add("            " + prop);
-                            }
-                            break;
-
-                        case "uint64_t":
-                            {
-                                string propName = splitted[1].Trim();
-                                int propIndex = Line.IndexOf(propName);
-                                string propLine = Line.Substring(propIndex).Replace(";", "");
-                                string[] split = propLine.Split(" ");
-
-                                string Name = Utils.SanitizeString(split[split.Length - 3]);
-
-                                if (!Utils.IsStringValid(Name)) continue;
-
-                                string Offset = split[split.Length - 1].Split("(")[0];
-                                string OffsetType = Utils.IsByte(Offset) ? "byte" : Utils.IsUshort(Offset) ? "ushort" : "uint";
-
-                                string prop = $"public const {OffsetType} {Name} = {Offset}; // {Type}";
-                                Converted.Add("            " + prop);
-                            }
-                            break;
-
-                        case "double":
-                            {
-                                string propName = splitted[1].Trim();
-                                int propIndex = Line.IndexOf(propName);
-                                string propLine = Line.Substring(propIndex).Replace(";", "");
-                                string[] split = propLine.Split(" ");
-
-                                string Name = Utils.SanitizeString(split[split.Length - 3]);
-
-                                if (!Utils.IsStringValid(Name)) continue;
-
-                                string Offset = split[split.Length - 1].Split("(")[0];
-                                string OffsetType = Utils.IsByte(Offset) ? "byte" : Utils.IsUshort(Offset) ? "ushort" : "uint";
-
-                                string prop = $"public const {OffsetType} {Name} = {Offset}; // {Type}";
-                                Converted.Add("            " + prop);
-                            }
-                            break;
-
-                        default:
-                            Logger.LogWarning($"Unsupported type: {Type}");
-                            break;
+                        Logger.LogWarning($"Unsupported type: {splitted[0].Trim()}");
+                        continue;
                     }
+
+                    string propName = splitted[1].Trim();
+                    int propIndex = Line.IndexOf(propName);
+                    string propLine = Line.Substring(propIndex).Replace(";", "");
+                    string[] split = propLine.Split(" ");
+
+                    string Name = Utils.SanitizeString(split[split.Length - 3]);
+
+                    if (!Utils.IsStringValid(Name)) continue;
+
+                    string Offset = split[split.Length - 1].Split("(")[0];
+                    string OffsetType = Utils.IsByte(Offset) ? "byte" : Utils.IsUshort(Offset) ? "ushort" : "uint";
+                    string StructType = split[0];
+
+                    string prop = $"public const {OffsetType} {Name} = {Offset}; // {Type} ({StructType})";
+                    Converted.Add("            " + prop);
                 }
             }
 
@@ -316,18 +95,7 @@ namespace UEDumpParser
 
                 if (splitted.Length != 6) return;
 
-                string Type = "int";
-                switch (splitted[4].Trim())
-                {
-                    case "uint8_t":
-                        Type = "byte";
-                        break;
-
-                    default:
-                        Logger.LogWarning($"Unsupported type: {splitted[4].Trim()}");
-                        break;
-                }
-
+                string Type = ConventionHelper.GetManagedType(splitted[4].Trim());
                 string classInit = $"public enum {splitted[2]} : {Type}";
                 Converted.Add("        " + classInit);
 

@@ -1,4 +1,6 @@
-﻿namespace UEDumpParser
+﻿using UEDumpParser.Wrappers;
+
+namespace UEDumpParser
 {
     internal class Boot
     {
@@ -39,6 +41,9 @@
             WriteEndLines(StructOffsetsFile);
 
             WriteEndLines(EnumOffsetsFile);
+
+            Logger.Log("Dump successfully parsed");
+            Console.ReadLine();
         }
 
         private static void WriteStartLines(string path, string ClassName)
