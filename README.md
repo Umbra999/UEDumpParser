@@ -11,6 +11,8 @@ Future Implentations:
 - SDK generator, this way you dont need to mess with offsets ever again and can work with full classes
 - Method calling, right now it only works on props/fields/classes
 
+Requirements: NET 7.0 https://dotnet.microsoft.com/en-us/download/dotnet/7.0
+
 Usage:
 1. Download or Compile the UEParser
 2. Create a folder called "Input" next to it
