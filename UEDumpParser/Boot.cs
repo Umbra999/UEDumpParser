@@ -1,19 +1,21 @@
-﻿using UEDumpParser.Wrappers;
+﻿using UEDumpParser.CppParsing;
+using UEDumpParser.Generator;
+using UEDumpParser.Wrappers;
 
 namespace UEDumpParser
 {
     internal class Boot
     {
-        private static List<string> ClassFiles = new();
-        private static List<string> StructFiles = new();
-
-        public static readonly string ClassOffsetsFile = "Output\\ClassOffsets.cs";
-        public static readonly string StructOffsetsFile = "Output\\StructOffsets.cs";
-        public static readonly string EnumOffsetsFile = "Output\\EnumOffsets.cs";
+        private static readonly List<string> ClassFiles = new();
+        private static readonly List<string> StructFiles = new();
 
         public static void Main()
         {
-            string[] FileNames = Directory.GetFiles("Input");
+            Logger.Log("Generating Offsets");
+
+            string[] FileNames = Directory.GetFiles(FileManager.InputFolder);
+
+            FileManager.Create();
 
             foreach (string file in FileNames) 
             {
@@ -21,53 +23,37 @@ namespace UEDumpParser
                 else if (file.EndsWith("classes.h")) ClassFiles.Add(file);
             }
 
-            if (Directory.Exists("Output")) Directory.Delete("Output", true);
-            Directory.CreateDirectory("Output");
+            FileWriter.WriteStartLines(FileManager.EnumOffsetsFile, "EnumOffsets");
 
-            WriteStartLines(EnumOffsetsFile, "EnumOffsets");
-
-            WriteStartLines(ClassOffsetsFile, "ClassOffsets");
+            FileWriter.WriteStartLines(FileManager.ClassOffsetsFile, "ClassOffsets");
             foreach (string file in ClassFiles) 
             {
-                 File.AppendAllLines(ClassOffsetsFile, CppToSharp.ConvertClass(file));
+                 File.AppendAllLines(FileManager.ClassOffsetsFile, CppToSharp.ConvertClass(file));
             }
-            WriteEndLines(ClassOffsetsFile);
+            FileWriter.WriteEndLines(FileManager.ClassOffsetsFile);
 
-            WriteStartLines(StructOffsetsFile, "StructOffsets");
+            FileWriter.WriteStartLines(FileManager.StructOffsetsFile, "StructOffsets");
             foreach (string file in StructFiles)
             {
-                File.AppendAllLines(StructOffsetsFile, CppToSharp.ConvertClass(file));
+                File.AppendAllLines(FileManager.StructOffsetsFile, CppToSharp.ConvertClass(file));
             }
-            WriteEndLines(StructOffsetsFile);
+            FileWriter.WriteEndLines(FileManager.StructOffsetsFile);
 
-            WriteEndLines(EnumOffsetsFile);
+            FileWriter.WriteEndLines(FileManager.EnumOffsetsFile);
 
-            Logger.Log("Dump successfully parsed");
+            Logger.Log("Offsets generated");
+
+            // W I P for SDK generation
+            //Logger.Log("Generating classes");
+
+            //SDKParser.SplitClass(FileManager.ClassOffsetsFile, FileManager.ClassFolder);
+            //SDKParser.SplitClass(FileManager.StructOffsetsFile, FileManager.StructFolder);
+
+            //Logger.Log("Classes generated");
+
+            Logger.Log("Generation finished");
+
             Console.ReadLine();
-        }
-
-        private static void WriteStartLines(string path, string ClassName)
-        {
-            List<string> Lines = new()
-            {
-                "namespace Hexed.SDK.Offsets",
-                "{",
-                $"    internal class {ClassName}",
-                "    {",
-            };
-
-            File.AppendAllLines(path, Lines);
-        }
-
-        private static void WriteEndLines(string path)
-        {
-            List<string> Lines = new()
-            {
-                "    }",
-                "}"
-            };
-
-            File.AppendAllLines(path, Lines);
         }
     }
 }

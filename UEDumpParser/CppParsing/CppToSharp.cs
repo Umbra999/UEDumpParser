@@ -1,6 +1,6 @@
 ﻿using UEDumpParser.Wrappers;
 
-namespace UEDumpParser
+namespace UEDumpParser.CppParsing
 {
     internal class CppToSharp
     {
@@ -11,7 +11,7 @@ namespace UEDumpParser
             bool WritingEnum = false;
 
             List<string> Converted = new();
-            foreach (string Line in Lines) 
+            foreach (string Line in Lines)
             {
                 if (Line == "};")
                 {
@@ -63,6 +63,7 @@ namespace UEDumpParser
                     }
 
                     string propName = splitted[1].Trim();
+
                     int propIndex = Line.IndexOf(propName);
                     string propLine = Line.Substring(propIndex).Replace(";", "");
                     string[] split = propLine.Split(" ");
@@ -73,9 +74,8 @@ namespace UEDumpParser
 
                     string Offset = split[split.Length - 1].Split("(")[0];
                     string OffsetType = Utils.IsByte(Offset) ? "byte" : Utils.IsUshort(Offset) ? "ushort" : "uint";
-                    string StructType = split[0];
 
-                    string prop = $"public const {OffsetType} {Name} = {Offset}; // {Type} ({StructType})";
+                    string prop = $"public const {OffsetType} {Name} = {Offset}; // {(Type == "struct" ? propName : Type)}";
                     Converted.Add("            " + prop);
                 }
             }
@@ -107,7 +107,7 @@ namespace UEDumpParser
 
             else Converted.Add("           " + Line);
 
-            File.AppendAllLines(Boot.EnumOffsetsFile, Converted);
+            File.AppendAllLines(FileManager.EnumOffsetsFile, Converted);
         }
     }
 }

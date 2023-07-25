@@ -1,4 +1,4 @@
-﻿namespace UEDumpParser
+﻿namespace UEDumpParser.CppParsing
 {
     internal class ConventionHelper
     {
